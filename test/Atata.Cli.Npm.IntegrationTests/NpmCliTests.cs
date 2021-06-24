@@ -35,16 +35,17 @@ namespace Atata.Cli.Npm.IntegrationTests
         }
 
         [Test]
-        public void Install_True()
+        public void Install_ThenUninstall()
         {
-            string packageName = "lodash";
+            string packageName = "uglify-js";
 
             EnsureNotInstalledGlobally(packageName);
 
-            _sut.Act(x => x.Install(packageName, null, true));
+            _sut.Act(x => x.Install(packageName, null, true))
+                .ResultOf(x => x.IsInstalled(packageName, null, true)).Should.BeTrue();
 
-            _sut.ResultOf(x => x.IsInstalled(packageName, null, true))
-                .Should.BeTrue();
+            _sut.Act(x => x.Uninstall(packageName, null, true))
+                .ResultOf(x => x.IsInstalled(packageName, null, true)).Should.BeFalse();
         }
 
         [Test]
