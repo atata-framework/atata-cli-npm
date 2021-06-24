@@ -37,7 +37,7 @@ namespace Atata.Cli.Npm.IntegrationTests
         [Test]
         public void Install_ThenUninstall()
         {
-            string packageName = "uglify-js";
+            string packageName = "arrify";
 
             EnsureNotInstalledGlobally(packageName);
 
