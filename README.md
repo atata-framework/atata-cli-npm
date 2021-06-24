@@ -1,4 +1,4 @@
-# Atata.Cli
+# Atata.Cli.Npm
 
 [![NuGet](http://img.shields.io/nuget/v/Atata.Cli.Npm.svg?style=flat)](https://www.nuget.org/packages/Atata.Cli.Npm/)
 [![GitHub release](https://img.shields.io/github/release/atata-framework/atata-cli-npm.svg)](https://github.com/atata-framework/atata-cli-npm/releases)
