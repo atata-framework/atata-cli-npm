@@ -5,7 +5,13 @@ namespace Atata.Cli.Npm.IntegrationTests
     [TestFixture]
     public class NpmCliTests
     {
-        private readonly Subject<NpmCli> _sut = new NpmCli().ToSutSubject();
+        private Subject<NpmCli> _sut;
+
+        [SetUp]
+        public void SetUpTest()
+        {
+            _sut = new NpmCli().ToSutSubject();
+        }
 
         [Test]
         public void IsItInstalled_True()
@@ -59,7 +65,7 @@ namespace Atata.Cli.Npm.IntegrationTests
             {
                 _sut.Act(x => x.Uninstall(packageName, null, true));
 
-                Assume.That(
+                Assert.That(
                     () => !_sut.ResultOf(x => x.IsInstalled(packageName, null, true)),
                     $"Failed to uninstall {packageName} package.");
             }
