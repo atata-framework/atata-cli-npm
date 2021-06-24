@@ -21,14 +21,14 @@ namespace Atata.Cli.Npm.IntegrationTests
         }
 
         [Test]
-        public void IsInstalledGlobally_True()
+        public void IsInstalled_Global_True()
         {
             _sut.ResultOf(x => x.IsInstalled("npm", null, true))
                 .Should.BeTrue();
         }
 
         [Test]
-        public void IsInstalledGlobally_False()
+        public void IsInstalled_Global_False()
         {
             _sut.ResultOf(x => x.IsInstalled("notexistingpackagename", null, true))
                 .Should.BeFalse();
