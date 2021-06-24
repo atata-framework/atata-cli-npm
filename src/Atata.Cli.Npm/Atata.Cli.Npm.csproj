@@ -13,4 +13,8 @@ Targets .NET Standard 2.0.</Description>
     <PackageProjectUrl>https://github.com/atata-framework/atata-cli-npm</PackageProjectUrl>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Atata.Cli" Version="1.1.0" />
+  </ItemGroup>
+
 </Project>
