@@ -57,7 +57,8 @@ namespace Atata.Cli.Npm
 
             commandText.Append(" --depth=0");
 
-            return Execute(commandText.ToString()).Output.Contains($"-- {packageName}");
+            var commandResult = Execute(commandText.ToString());
+            return commandResult.Output.Contains($"{packageName}@");
         }
 
         /// <summary>

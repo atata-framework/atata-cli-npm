@@ -20,10 +20,11 @@ namespace Atata.Cli.Npm.IntegrationTests
                 .Should.BeTrue();
         }
 
-        [Test]
-        public void IsInstalled_Global_True()
+        [TestCase("gulp-cli", IncludePlatform = Platforms.Windows)]
+        [TestCase("npm", ExcludePlatform = Platforms.Windows)]
+        public void IsInstalled_Global_True(string packageName)
         {
-            _sut.ResultOf(x => x.IsInstalled("npm", null, true))
+            _sut.ResultOf(x => x.IsInstalled(packageName, null, true))
                 .Should.BeTrue();
         }
 
@@ -35,6 +36,7 @@ namespace Atata.Cli.Npm.IntegrationTests
         }
 
         [Test]
+        [Platform(Exclude = Platforms.Linux, Reason = "No permissions.")]
         public void Install_ThenUninstall()
         {
             string packageName = "arrify";
