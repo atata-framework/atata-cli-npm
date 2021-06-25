@@ -43,6 +43,8 @@ Install [`Atata.Cli.Npm`](https://www.nuget.org/packages/Atata.Cli.Npm/) NuGet p
 
 ## Usage
 
+The main class is `NpmCli` located in `Atata.Cli.Npm` namespace.
+
 ### Check NPM is Installed
 
 ```cs
