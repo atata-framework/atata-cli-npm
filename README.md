@@ -2,6 +2,7 @@
 
 [![NuGet](http://img.shields.io/nuget/v/Atata.Cli.Npm.svg?style=flat)](https://www.nuget.org/packages/Atata.Cli.Npm/)
 [![GitHub release](https://img.shields.io/github/release/atata-framework/atata-cli-npm.svg)](https://github.com/atata-framework/atata-cli-npm/releases)
+[![Build status](https://dev.azure.com/atata-framework/atata-cli-npm/_apis/build/status/atata-cli-npm-ci?branchName=main)](https://dev.azure.com/atata-framework/atata-cli-npm/_build/latest?definitionId=44&branchName=main)
 [![Slack](https://img.shields.io/badge/join-Slack-green.svg?colorB=4EB898)](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
 [![Atata docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata.io)
 [![Twitter](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://twitter.com/AtataFramework)
@@ -21,7 +22,10 @@
 
 ## Features
 
-To be added...
+- Checks whether NPM is installed.
+- Checks whether package is installed.
+- Installs package.
+- Uninstalls package.
 
 ## Installation
 
@@ -39,7 +43,57 @@ Install [`Atata.Cli.Npm`](https://www.nuget.org/packages/Atata.Cli.Npm/) NuGet p
 
 ## Usage
 
-To be added...
+### Check NPM is Installed
+
+```cs
+bool isNpmInstalled = new NpmCli()
+    .IsItInstalled();
+```
+
+### Ensure NPM is Installed
+
+```cs
+new NpmCli()
+    .EnsureItIsInstalled();
+```
+
+If NPM isn't installed, throws `CliCommandException`.
+
+### Install Package Into Directory
+
+```cs
+NpmCli.InDirectory("some/dir")
+    .Install("npm-package-name-1")
+    .Install("npm-package-name-2", "1.2.3");
+```
+
+### Install Package Globally
+
+```cs
+new NpmCli()
+    .Install("html-validate", global: true);
+```
+
+### Install Package If Missing
+
+```cs
+NpmCli.InBaseDirectory()
+    .InstallIfMissing("html-validate", global: true);
+```
+
+### Check Package is Installed
+
+```cs
+bool isPackageInstalled = new NpmCli()
+    .IsInstalled("html-validate", global: true);
+```
+
+### Uninstall Package
+
+```cs
+new NpmCli()
+    .Uninstall("html-validate", global: true);
+```
 
 ## Feedback
 

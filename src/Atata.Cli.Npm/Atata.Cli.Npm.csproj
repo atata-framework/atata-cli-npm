@@ -5,7 +5,13 @@
     <Version>1.0.0</Version>
     <Description>.NET library that provides an API for NPM.
 
-Targets .NET Standard 2.0.</Description>
+Targets .NET Standard 2.0.
+
+Features:
+- Checks whether NPM is installed.
+- Checks whether package is installed.
+- Installs package.
+- Uninstalls package.</Description>
     <RepositoryUrl>https://github.com/atata-framework/atata-cli-npm</RepositoryUrl>
     <PackageId>Atata.Cli.Npm</PackageId>
     <PackageTags>atata cli api npm</PackageTags>
