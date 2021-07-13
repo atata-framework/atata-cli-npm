@@ -10,6 +10,7 @@ Targets .NET Standard 2.0.
 Features:
 - Checks whether NPM is installed.
 - Checks whether package is installed.
+- Gets installed package version.
 - Installs package.
 - Uninstalls package.</Description>
     <RepositoryUrl>https://github.com/atata-framework/atata-cli-npm</RepositoryUrl>

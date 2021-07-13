@@ -24,6 +24,7 @@
 
 - Checks whether NPM is installed.
 - Checks whether package is installed.
+- Gets installed package version.
 - Installs package.
 - Uninstalls package.
 
@@ -44,6 +45,8 @@ Install [`Atata.Cli.Npm`](https://www.nuget.org/packages/Atata.Cli.Npm/) NuGet p
 ## Usage
 
 The main class is `NpmCli` located in `Atata.Cli.Npm` namespace.
+
+There is also `GlobalNpmPackageCli<TCli>`, which can be used as a base class of specific NPM package CLI.
 
 ### Check NPM is Installed
 
@@ -88,6 +91,20 @@ NpmCli.InBaseDirectory()
 ```cs
 bool isPackageInstalled = new NpmCli()
     .IsInstalled("html-validate", global: true);
+```
+
+### Check Specific Package Version is Installed
+
+```cs
+bool isPackageVersionInstalled = new NpmCli()
+    .IsInstalled("html-validate", "5.0.0", global: true);
+```
+
+### Get Installed Package Version
+
+```cs
+string packageVersion = new NpmCli()
+    .GetInstalledVersion("html-validate", global: true);
 ```
 
 ### Uninstall Package

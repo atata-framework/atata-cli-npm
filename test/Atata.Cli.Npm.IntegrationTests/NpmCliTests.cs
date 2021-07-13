@@ -51,6 +51,24 @@ namespace Atata.Cli.Npm.IntegrationTests
         }
 
         [Test]
+        [Platform(Exclude = Platforms.Linux, Reason = "No permissions.")]
+        public void Install_ThenUninstall_SpecificVersion()
+        {
+            string packageName = "arrify";
+            string packageVersion = "2.0.1";
+
+            EnsureNotInstalledGlobally(packageName);
+
+            _sut.Act(x => x.Install(packageName, packageVersion, true));
+            _sut.ResultOf(x => x.IsInstalled(packageName, packageVersion, true)).Should.BeTrue();
+            _sut.ResultOf(x => x.GetInstalledVersion(packageName, true)).Should.Equal(packageVersion);
+
+            _sut.Act(x => x.Uninstall(packageName, null, true));
+            _sut.ResultOf(x => x.IsInstalled(packageName, null, true)).Should.BeFalse();
+            _sut.ResultOf(x => x.GetInstalledVersion(packageName, true)).Should.BeNull();
+        }
+
+        [Test]
         public void Install_False()
         {
             string packageName = "notexistingpackagename";

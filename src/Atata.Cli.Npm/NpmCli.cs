@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 
 namespace Atata.Cli.Npm
 {
@@ -49,6 +50,27 @@ namespace Atata.Cli.Npm
         /// </returns>
         public bool IsInstalled(string packageName, string version = null, bool global = false)
         {
+            CliCommandResult commandResult = ExecuteListPackageCommand(packageName, version, global);
+            return commandResult.Output.Contains($"{packageName}@");
+        }
+
+        /// <summary>
+        /// Gets the installed package version.
+        /// </summary>
+        /// <param name="packageName">Name of the package.</param>
+        /// <param name="global">Is package global.</param>
+        /// <returns>The version string or <see langword="null"/>.</returns>
+        public string GetInstalledVersion(string packageName, bool global = false)
+        {
+            CliCommandResult commandResult = ExecuteListPackageCommand(packageName, null, global);
+
+            return commandResult.Output.Contains($"{packageName}@")
+                ? commandResult.Output.Split('@').Last().Trim()
+                : null;
+        }
+
+        private CliCommandResult ExecuteListPackageCommand(string packageName, string version, bool global)
+        {
             packageName.CheckNotNullOrWhitespace(packageName);
 
             StringBuilder commandText = new StringBuilder("ls");
@@ -58,7 +80,7 @@ namespace Atata.Cli.Npm
             commandText.Append(" --depth=0");
 
             var commandResult = Execute(commandText.ToString());
-            return commandResult.Output.Contains($"{packageName}@");
+            return commandResult;
         }
 
         /// <summary>
