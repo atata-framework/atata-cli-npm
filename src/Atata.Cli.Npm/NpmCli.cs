@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace Atata.Cli.Npm
@@ -65,7 +66,9 @@ namespace Atata.Cli.Npm
             CliCommandResult commandResult = ExecuteListPackageCommand(packageName, null, global);
 
             return commandResult.Output.Contains($"{packageName}@")
-                ? commandResult.Output.Split('@').Last().Trim()
+                ? commandResult.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                    .First(x => x.Contains($"{packageName}@"))
+                    .Split('@').Last().Trim()
                 : null;
         }
 
