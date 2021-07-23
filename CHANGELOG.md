@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Add `NpmNotFoundException` that is thrown by `NpmCli.EnsureItIsInstalled` method.
+
 ### Changed
 
 - Upgrade `Atata.Cli` package to v1.3.0.
