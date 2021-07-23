@@ -22,7 +22,7 @@ namespace Atata.Cli.Npm
         /// If it isn't, throws <see cref="NpmNotFoundException"/>.
         /// </summary>
         /// <returns>The same instance.</returns>
-        /// <exception cref="CliCommandException">NPM is not found. Ensure that Node.js and NPM are installed.</exception>
+        /// <exception cref="NpmNotFoundException">NPM is not found. Ensure that Node.js and NPM are installed.</exception>
         public NpmCli EnsureItIsInstalled()
         {
             if (!IsItInstalled())
