@@ -62,7 +62,7 @@ new NpmCli()
     .EnsureItIsInstalled();
 ```
 
-If NPM isn't installed, throws `CliCommandException`.
+If NPM isn't installed, throws `NpmNotFoundException`.
 
 ### Install Package Into Directory
 
