@@ -61,7 +61,7 @@ namespace Atata.Cli.Npm.IntegrationTests
 
             _sut.Act(x => x.Install(packageName, packageVersion, true));
             _sut.ResultOf(x => x.IsInstalled(packageName, packageVersion, true)).Should.BeTrue();
-            _sut.ResultOf(x => x.GetInstalledVersion(packageName, true)).Should.Equal(packageVersion);
+            _sut.ResultOf(x => x.GetInstalledVersion(packageName, true)).Should.Be(packageVersion);
 
             _sut.Act(x => x.Uninstall(packageName, null, true));
             _sut.ResultOf(x => x.IsInstalled(packageName, null, true)).Should.BeFalse();
@@ -73,10 +73,8 @@ namespace Atata.Cli.Npm.IntegrationTests
         {
             string packageName = "notexistingpackagename";
 
-            var exception = Assert.Throws<CliCommandException>(() =>
-                _sut.Act(x => x.Install(packageName, null, true)));
-
-            exception.ToResultSubject()
+            _sut.Invoking(x => x.Install(packageName, null, true))
+                .Should.Throw<CliCommandException>()
                 .ValueOf(x => x.Message).Should.Contain(packageName);
         }
 
