@@ -21,7 +21,7 @@ Features:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata.Cli" Version="2.0.0-beta.1" />
+    <PackageReference Include="Atata.Cli" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
