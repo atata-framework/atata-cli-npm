@@ -82,8 +82,7 @@ namespace Atata.Cli.Npm
 
             commandText.Append(" --depth=0");
 
-            var commandResult = Execute(commandText.ToString());
-            return commandResult;
+            return ExecuteRaw(commandText.ToString());
         }
 
         /// <summary>
