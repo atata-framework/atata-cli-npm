@@ -38,7 +38,7 @@ namespace Atata.Cli.Npm
         /// <see langword="true"/> if it is installed; otherwise, <see langword="false"/>.
         /// </returns>
         public bool IsItInstalled() =>
-            string.IsNullOrEmpty(ExecuteRaw("-v").Error);
+            ExecuteRaw("-v").ExitCode == 0;
 
         /// <summary>
         /// Determines whether the specified package is installed.
