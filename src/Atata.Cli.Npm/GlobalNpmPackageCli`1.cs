@@ -12,10 +12,8 @@
         /// </summary>
         /// <param name="packageName">Name of the package.</param>
         protected GlobalNpmPackageCli(string packageName)
-            : base(packageName, true)
-        {
+            : base(packageName, true) =>
             PackageName = packageName;
-        }
 
         /// <summary>
         /// Gets the name of the NPM package.
