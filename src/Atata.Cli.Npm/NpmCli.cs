@@ -68,7 +68,9 @@ namespace Atata.Cli.Npm
             return commandResult.Output.Contains($"{packageName}@")
                 ? commandResult.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
                     .First(x => x.Contains($"{packageName}@"))
-                    .Split('@').Last().Trim()
+                    .Split('@')
+                    .Last()
+                    .Trim()
                 : null;
         }
 
