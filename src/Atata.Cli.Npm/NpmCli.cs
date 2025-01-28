@@ -62,7 +62,7 @@ public class NpmCli : ProgramCli<NpmCli>
         CliCommandResult commandResult = ExecuteListPackageCommand(packageName, null, global);
 
         return commandResult.Output.Contains($"{packageName}@")
-            ? commandResult.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+            ? commandResult.Output.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries)
                 .First(x => x.Contains($"{packageName}@"))
                 .Split('@')
                 .Last()
