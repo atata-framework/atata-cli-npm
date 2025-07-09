@@ -45,7 +45,7 @@ public class NpmCli : ProgramCli<NpmCli>
     /// <returns>
     /// <see langword="true"/> if the specified package is installed; otherwise, <see langword="false"/>.
     /// </returns>
-    public bool IsInstalled(string packageName, string version = null, bool global = false)
+    public bool IsInstalled(string packageName, string? version = null, bool global = false)
     {
         CliCommandResult commandResult = ExecuteListPackageCommand(packageName, version, global);
         return commandResult.Output.Contains($"{packageName}@");
@@ -57,7 +57,7 @@ public class NpmCli : ProgramCli<NpmCli>
     /// <param name="packageName">Name of the package.</param>
     /// <param name="global">Is package global.</param>
     /// <returns>The version string or <see langword="null"/>.</returns>
-    public string GetInstalledVersion(string packageName, bool global = false)
+    public string? GetInstalledVersion(string packageName, bool global = false)
     {
         CliCommandResult commandResult = ExecuteListPackageCommand(packageName, null, global);
 
@@ -70,11 +70,11 @@ public class NpmCli : ProgramCli<NpmCli>
             : null;
     }
 
-    private CliCommandResult ExecuteListPackageCommand(string packageName, string version, bool global)
+    private CliCommandResult ExecuteListPackageCommand(string packageName, string? version, bool global)
     {
-        packageName.CheckNotNullOrWhitespace(packageName);
+        Guard.ThrowIfNullOrWhitespace(packageName);
 
-        StringBuilder commandText = new StringBuilder("ls");
+        StringBuilder commandText = new("ls");
 
         AddInstallationParameters(commandText, packageName, version, global);
 
@@ -90,11 +90,11 @@ public class NpmCli : ProgramCli<NpmCli>
     /// <param name="version">The version.</param>
     /// <param name="global">Is package global.</param>
     /// <returns>The same instance.</returns>
-    public NpmCli Install(string packageName, string version = null, bool global = false)
+    public NpmCli Install(string packageName, string? version = null, bool global = false)
     {
-        packageName.CheckNotNullOrWhitespace(packageName);
+        Guard.ThrowIfNullOrWhitespace(packageName);
 
-        StringBuilder commandText = new StringBuilder("install");
+        StringBuilder commandText = new("install");
 
         AddInstallationParameters(commandText, packageName, version, global);
 
@@ -111,7 +111,7 @@ public class NpmCli : ProgramCli<NpmCli>
     /// <param name="version">The version.</param>
     /// <param name="global">Is package global.</param>
     /// <returns>The same instance.</returns>
-    public NpmCli InstallIfMissing(string packageName, string version = null, bool global = false)
+    public NpmCli InstallIfMissing(string packageName, string? version = null, bool global = false)
     {
         if (!IsInstalled(packageName, version, global))
             Install(packageName, version, global);
@@ -126,11 +126,11 @@ public class NpmCli : ProgramCli<NpmCli>
     /// <param name="version">The version.</param>
     /// <param name="global">Is package global.</param>
     /// <returns>The same instance.</returns>
-    public NpmCli Uninstall(string packageName, string version = null, bool global = false)
+    public NpmCli Uninstall(string packageName, string? version = null, bool global = false)
     {
-        packageName.CheckNotNullOrWhitespace(packageName);
+        Guard.ThrowIfNullOrWhitespace(packageName);
 
-        StringBuilder commandText = new StringBuilder("uninstall");
+        StringBuilder commandText = new("uninstall");
 
         AddInstallationParameters(commandText, packageName, version, global);
 
@@ -139,14 +139,14 @@ public class NpmCli : ProgramCli<NpmCli>
         return this;
     }
 
-    private static void AddInstallationParameters(StringBuilder commandText, string packageName, string version, bool global)
+    private static void AddInstallationParameters(StringBuilder commandText, string packageName, string? version, bool global)
     {
         if (global)
             commandText.Append(" -g");
 
         commandText.Append($" {packageName}");
 
-        if (!string.IsNullOrWhiteSpace(version))
+        if (version?.Length > 0)
             commandText.Append($"@{version}");
     }
 }

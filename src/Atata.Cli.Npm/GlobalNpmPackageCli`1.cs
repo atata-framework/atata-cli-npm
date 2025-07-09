@@ -27,9 +27,9 @@ public abstract class GlobalNpmPackageCli<TCli> : ProgramCli<TCli>
     /// <returns>The same instance.</returns>
     public TCli RequireVersion(string version)
     {
-        version.CheckNotNullOrWhitespace(nameof(version));
+        Guard.ThrowIfNullOrWhitespace(version);
 
-        string installedVersion = GetInstalledVersion();
+        string? installedVersion = GetInstalledVersion();
 
         if (installedVersion != version)
             Install(version);
@@ -43,7 +43,7 @@ public abstract class GlobalNpmPackageCli<TCli> : ProgramCli<TCli>
     /// </summary>
     /// <param name="version">The version.</param>
     /// <returns>The same instance.</returns>
-    public TCli Install(string version = null)
+    public TCli Install(string? version = null)
     {
         CreateNpmCli()
             .Install(PackageName, version, global: true);
@@ -55,7 +55,7 @@ public abstract class GlobalNpmPackageCli<TCli> : ProgramCli<TCli>
     /// Gets the installed package version.
     /// </summary>
     /// <returns>The version string or <see langword="null"/>.</returns>
-    public virtual string GetInstalledVersion() =>
+    public virtual string? GetInstalledVersion() =>
         CreateNpmCli()
             .GetInstalledVersion(PackageName, global: true);
 
