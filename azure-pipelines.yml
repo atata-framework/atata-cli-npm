@@ -1,5 +1,6 @@
 variables:
   buildConfiguration: 'Release'
+  netSdkVersion: '9.x'
 
 jobs:
 - job: BuildAndRunCodeAnalysis
@@ -7,6 +8,10 @@ jobs:
   pool:
     vmImage: windows-latest
   steps:
+  - task: UseDotNet@2
+    displayName: Set up .NET SDK
+    inputs:
+      version: $(netSdkVersion)
   - task: DotNetCoreCLI@2
     displayName: Build solution with code analysis
     inputs:
@@ -19,6 +24,10 @@ jobs:
   pool:
     vmImage: windows-latest
   steps:
+  - task: UseDotNet@2
+    displayName: Set up .NET SDK
+    inputs:
+      version: $(netSdkVersion)
   - task: DotNetCoreCLI@2
     displayName: Build solution
     inputs:
@@ -27,7 +36,7 @@ jobs:
       arguments: -c $(buildConfiguration) -p:RunAnalyzers=false
   - task: DotNetCoreCLI@2
     displayName: Run tests
-    timeoutInMinutes: 30
+    timeoutInMinutes: 5
     inputs:
       command: test
       projects: '**/*Tests.csproj'
@@ -38,6 +47,10 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
+  - task: UseDotNet@2
+    displayName: Set up .NET SDK
+    inputs:
+      version: $(netSdkVersion)
   - task: DotNetCoreCLI@2
     displayName: Build solution
     inputs:
@@ -46,7 +59,7 @@ jobs:
       arguments: -c $(buildConfiguration) -p:RunAnalyzers=false
   - task: DotNetCoreCLI@2
     displayName: Run tests
-    timeoutInMinutes: 30
+    timeoutInMinutes: 5
     inputs:
       command: test
       projects: '**/*Tests.csproj'
@@ -57,6 +70,10 @@ jobs:
   pool:
     vmImage: macOS-latest
   steps:
+  - task: UseDotNet@2
+    displayName: Set up .NET SDK
+    inputs:
+      version: $(netSdkVersion)
   - task: DotNetCoreCLI@2
     displayName: Build solution
     inputs:
@@ -65,7 +82,7 @@ jobs:
       arguments: -c $(buildConfiguration) -p:RunAnalyzers=false
   - task: DotNetCoreCLI@2
     displayName: Run tests
-    timeoutInMinutes: 30
+    timeoutInMinutes: 5
     inputs:
       command: test
       projects: '**/*Tests.csproj'
