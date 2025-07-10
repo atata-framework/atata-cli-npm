@@ -3,7 +3,7 @@
 [TestFixture]
 public class NpmCliTests
 {
-    private Subject<NpmCli> _sut;
+    private Subject<NpmCli> _sut = null!;
 
     [SetUp]
     public void SetUpTest() =>
