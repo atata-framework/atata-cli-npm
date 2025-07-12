@@ -23,7 +23,7 @@ Features:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata.Cli" Version="2.2.0" />
+    <PackageReference Include="Atata.Cli" Version="4.0.0-beta.1" />
     <PackageReference Include="PolySharp" Version="1.15.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
