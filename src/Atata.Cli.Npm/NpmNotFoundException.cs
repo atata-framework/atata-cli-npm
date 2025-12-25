@@ -1,7 +1,7 @@
 ﻿namespace Atata.Cli.Npm;
 
 /// <summary>
-/// The exception that is thrown when NPM is not found.
+/// An exception that is thrown when npm is not found.
 /// </summary>
 public sealed class NpmNotFoundException : Exception
 {

@@ -1,7 +1,7 @@
 ﻿namespace Atata.Cli.Npm;
 
 /// <summary>
-/// Represents the CLI of "npm" program.
+/// Represents the CLI of npm program.
 /// </summary>
 public class NpmCli : ProgramCli<NpmCli>
 {
@@ -14,21 +14,21 @@ public class NpmCli : ProgramCli<NpmCli>
     }
 
     /// <summary>
-    /// Ensures that NPM is installed.
+    /// Ensures that npm is installed.
     /// If it isn't, throws <see cref="NpmNotFoundException"/>.
     /// </summary>
     /// <returns>The same instance.</returns>
-    /// <exception cref="NpmNotFoundException">NPM is not found. Ensure that Node.js and NPM are installed.</exception>
+    /// <exception cref="NpmNotFoundException">npm is not found. Ensure that Node.js and npm are installed.</exception>
     public NpmCli EnsureItIsInstalled()
     {
         if (!IsItInstalled())
-            throw new NpmNotFoundException("NPM is not found. Ensure that Node.js and NPM are installed.");
+            throw new NpmNotFoundException("npm is not found. Ensure that Node.js and npm are installed.");
 
         return this;
     }
 
     /// <summary>
-    /// Determines whether NPM is installed.
+    /// Determines whether npm is installed.
     /// </summary>
     /// <returns>
     /// <see langword="true"/> if it is installed; otherwise, <see langword="false"/>.

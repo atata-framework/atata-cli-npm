@@ -1,7 +1,7 @@
 ﻿namespace Atata.Cli.Npm;
 
 /// <summary>
-/// Represents the base class of specific NPM package CLI.
+/// Represents the base class of specific npm package CLI.
 /// </summary>
 /// <typeparam name="TCli">The type of the specific CLI class that inherits <see cref="GlobalNpmPackageCli{TCli}"/>.</typeparam>
 public abstract class GlobalNpmPackageCli<TCli> : ProgramCli<TCli>
@@ -16,7 +16,7 @@ public abstract class GlobalNpmPackageCli<TCli> : ProgramCli<TCli>
         PackageName = packageName;
 
     /// <summary>
-    /// Gets the name of the NPM package.
+    /// Gets the name of the npm package.
     /// </summary>
     public string PackageName { get; }
 

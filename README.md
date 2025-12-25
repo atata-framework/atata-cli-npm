@@ -22,7 +22,7 @@
 
 ## Features
 
-- Checks whether NPM is installed.
+- Checks whether npm is installed.
 - Checks whether package is installed.
 - Gets installed package version.
 - Installs package.
@@ -46,23 +46,23 @@ Install [`Atata.Cli.Npm`](https://www.nuget.org/packages/Atata.Cli.Npm/) NuGet p
 
 The main class is `NpmCli` located in `Atata.Cli.Npm` namespace.
 
-There is also `GlobalNpmPackageCli<TCli>`, which can be used as a base class of specific NPM package CLI.
+There is also `GlobalNpmPackageCli<TCli>`, which can be used as a base class of specific npm package CLI.
 
-### Check NPM is Installed
+### Check npm is Installed
 
 ```cs
 bool isNpmInstalled = new NpmCli()
     .IsItInstalled();
 ```
 
-### Ensure NPM is Installed
+### Ensure npm is Installed
 
 ```cs
 new NpmCli()
     .EnsureItIsInstalled();
 ```
 
-If NPM isn't installed, throws `NpmNotFoundException`.
+If npm isn't installed, throws `NpmNotFoundException`.
 
 ### Install Package Into Directory
 
