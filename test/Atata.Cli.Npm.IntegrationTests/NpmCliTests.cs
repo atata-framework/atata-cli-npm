@@ -1,7 +1,6 @@
 ﻿namespace Atata.Cli.Npm.IntegrationTests;
 
-[TestFixture]
-public class NpmCliTests
+public sealed class NpmCliTests
 {
     private Subject<NpmCli> _sut = null!;
 
