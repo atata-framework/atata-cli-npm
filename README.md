@@ -9,7 +9,7 @@
 
 **Atata.Cli.Npm** is a C#/.NET library that provides an API for [npm](https://www.npmjs.com/).
 
-*The package targets .NET Standard 2.0, which supports .NET 5+, .NET Framework 4.6.1+ and .NET Core/Standard 2.0+.*
+*The package targets .NET 8.0 and .NET Framework 4.6.2.*
 
 ## Table of Contents
 
@@ -103,7 +103,7 @@ bool isPackageVersionInstalled = new NpmCli()
 ### Get Installed Package Version
 
 ```cs
-string packageVersion = new NpmCli()
+string? packageVersion = new NpmCli()
     .GetInstalledVersion("html-validate", global: true);
 ```
 
