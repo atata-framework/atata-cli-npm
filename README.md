@@ -39,14 +39,14 @@ The main class is `NpmCli` located in `Atata.Cli.Npm` namespace.
 
 There is also `GlobalNpmPackageCli<TCli>`, which can be used as a base class of specific npm package CLI.
 
-### Check npm is Installed
+### Check npm is installed
 
 ```cs
 bool isNpmInstalled = new NpmCli()
     .IsItInstalled();
 ```
 
-### Ensure npm is Installed
+### Ensure npm is installed
 
 ```cs
 new NpmCli()
@@ -55,7 +55,7 @@ new NpmCli()
 
 If npm isn't installed, throws `NpmNotFoundException`.
 
-### Install Package Into Directory
+### Install package into directory
 
 ```cs
 NpmCli.InDirectory("some/dir")
@@ -63,42 +63,42 @@ NpmCli.InDirectory("some/dir")
     .Install("npm-package-name-2", "1.2.3");
 ```
 
-### Install Package Globally
+### Install package globally
 
 ```cs
 new NpmCli()
     .Install("html-validate", global: true);
 ```
 
-### Install Package If Missing
+### Install package if missing
 
 ```cs
 NpmCli.InBaseDirectory()
     .InstallIfMissing("html-validate", global: true);
 ```
 
-### Check Package is Installed
+### Check package is installed
 
 ```cs
 bool isPackageInstalled = new NpmCli()
     .IsInstalled("html-validate", global: true);
 ```
 
-### Check Specific Package Version is Installed
+### Check specific package version is installed
 
 ```cs
 bool isPackageVersionInstalled = new NpmCli()
     .IsInstalled("html-validate", "5.0.0", global: true);
 ```
 
-### Get Installed Package Version
+### Get installed package version
 
 ```cs
 string? packageVersion = new NpmCli()
     .GetInstalledVersion("html-validate", global: true);
 ```
 
-### Uninstall Package
+### Uninstall package
 
 ```cs
 new NpmCli()
